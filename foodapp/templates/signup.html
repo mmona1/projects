@@ -1,0 +1,84 @@
+{% extends 'style.html' %}
+{% block body_block %}
+{% load static %}
+</div>
+<style>
+  /* Style for the form container */
+  .form-container {
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  /* Style for the form elements */
+  .form-container form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-container label {
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  .form-container input[type="text"],
+  .form-container input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+
+  .form-container button[type="submit"] {
+    background-color: #ffbe33;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    
+    margin-top: 20px;
+    
+  }
+
+  /* Style for the login link */
+  .form-container p {
+    margin-top: 10px;
+  }
+
+  .form-container p a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+</style>
+<!-- food section -->
+
+<body class="sub_page">
+  <div class="hero_area">
+    <div class="bg-box">  
+    </div>
+  </div>
+  <div class="container">
+    <div class="form-container">
+        <h2>Sign Up</h2>
+        <form method="post">
+            {% csrf_token %}
+            <label for="{{ form.username.id_for_label }}">Username:</label>
+            {{ form.username }}
+            <label for="{{ form.password1.id_for_label }}">Password:</label>
+            {{ form.password1 }}
+            <label for="{{ form.password2.id_for_label }}">Confirm Password:</label>
+            {{ form.password2 }}
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="{% url 'login' %}">Log in</a></p>
+    </div>
+</div>
+{% endblock %}

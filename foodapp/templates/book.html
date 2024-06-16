@@ -1,0 +1,88 @@
+{% extends 'style.html' %}
+{% block body_block %}
+{% load static %}
+</div>
+<body class="sub_page">
+  <div class="hero_area">
+    <div class="bg-box"> 
+    </div>
+  </div>
+<section class="book_section layout_padding">
+  <div class="container">
+    <div class="heading_container">
+      <h2>
+        Book A Table
+      </h2>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form_container">
+          <form method="post" class="form">
+            {% csrf_token %}
+            
+            <div class="form-group">
+             
+              <input type="text" id="id_name" name="name" class="form-control" placeholder="Your Name" />
+            </div>
+            <div class="form-group">
+             
+              <input type="text" id="id_phone_number" name="phone_number" class="form-control" placeholder="Phone Number" />
+            </div>
+            <div class="form-group">
+            
+              <input type="email" id="id_email" name="email" class="form-control" placeholder="Your Email" />
+            </div>
+            <div class="form-group">
+             
+              <select id="id_persons" name="persons" class="form-control nice-select wide">
+                <option value="" disabled selected>Select an option</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <input type="date" id="id_reservation_date" name="reservation_date" class="form-control">
+            </div>
+            <div class="btn_box">
+              <button type="submit">Book Now</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="map_container">
+          <div id="googleMap"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('.form').submit(function(e) { // Change to target forms with class "form"
+        e.preventDefault();
+        
+        $.ajax({
+            type: 'POST',
+            url: '/book/', // Update with your URL
+            data: $(this).serialize(),
+            success: function(response) {
+                alert(response.message); // Show success message
+                // You can optionally redirect the user or perform other actions here
+            },
+            error: function(xhr, status, error) {
+                alert('Error: ' + xhr.responseText); // Show error message if any
+            }
+        });
+    });
+});
+</script>> 
+
+
+{% endblock %}

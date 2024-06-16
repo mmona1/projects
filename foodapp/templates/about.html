@@ -1,0 +1,41 @@
+{% extends 'style.html' %}
+{% block body_block %}
+{% load static %}
+
+<!-- food section -->
+</div>
+<body class="sub_page">
+  <div class="hero_area">
+    <div class="bg-box">
+    </div>
+  </div>
+<section class="about_section layout_padding">
+  <div class="container">
+    {% for abo in about %}
+    <div class="row">
+      <div class="col-md-6">
+        <div class="img-box">
+          <img src="{{ abo.img.url }}" alt="">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="detail-box">
+          <div class="heading_container">
+            <h2>
+              {{ abo.title }}
+            </h2>
+          </div>
+          <p>
+            {{ abo.discription }}
+          </p>
+          <a href="">
+            Read More
+          </a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+</body>
+{% endblock %}
